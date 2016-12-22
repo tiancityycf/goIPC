@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"ipc"
+	"log"
 	"sync"
 )
 
@@ -21,12 +22,14 @@ type CenterServer struct {
 }
 
 func NewCenterServer() *CenterServer {
+	log.Println("new center server")
 	servers := make(map[string]ipc.Server)
 	players := make([]*Player, 0)
 	return &CenterServer{servers: servers, players: players}
 }
 
 func (server *CenterServer) addPlayer(params string) error {
+	log.Println("new center server addPlayer")
 	player := NewPlayer()
 	err := json.Unmarshal([]byte(params), &player)
 	if err != nil {

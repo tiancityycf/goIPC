@@ -114,6 +114,7 @@ func main() {
 		tokens := strings.Split(line, " ")
 		if handler, ok := handlers[tokens[0]]; ok {
 			ret := handler(tokens)
+			//fmt.Println("logout ret=", ret)
 			if ret != 0 {
 				break
 			}
